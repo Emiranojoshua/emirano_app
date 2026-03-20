@@ -46,7 +46,7 @@ class MyTestApp extends StatelessWidget {
     return MaterialApp(
       title: 'My Demo Project',
       theme: ThemeData.light(),
-      // theme: ThemeData(primarySwatch: Colors.blue),
+      // theme: ThemeData(primarySwatch: Colors.blue)bbbbbbb,
       home: MyCurrencyConverter(),
     );
   }
@@ -55,10 +55,14 @@ class MyTestApp extends StatelessWidget {
 class MyCurrencyConverter extends StatelessWidget {
   const MyCurrencyConverter({super.key});
 
-  int result = 0;
+  // int result = 0;
 
   @override
   Widget build(BuildContext context) {
+    double result = 0;
+    final TextEditingController controller =
+        TextEditingController();
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Currency Converter"),
@@ -71,15 +75,16 @@ class MyCurrencyConverter extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "0",
-                style: TextStyle(
+                result.toString(),
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 55,
                 ),
               ),
               TextField(
+                controller: controller,
                 keyboardType: TextInputType.number,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: "Please enter the amount",
                   prefixIcon: Icon(Icons.attach_money),
                   border: OutlineInputBorder(
@@ -88,7 +93,7 @@ class MyCurrencyConverter extends StatelessWidget {
                       width: 2.0,
                     ),
                   ),
-                  focusedBorder: OutlineInputBorder(
+                  focusedBorder:OutlineInputBorder(
                     borderSide: BorderSide(
                       color: Colors.blue,
                       width: 2.0,
@@ -96,10 +101,11 @@ class MyCurrencyConverter extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+             const SizedBox(height: 20),
               TextButton(
                 onPressed: () {
-                  debugPrint("Button clicked");
+                  result = double.parse(controller.text) * 20;
+                  debugPrint(result.toString());
                 },
                 // style: const ButtonStyle(
                 //   elevation: WidgetStatePropertyAll(25),
