@@ -21,7 +21,7 @@ class _AppBodyState extends State<AppBody> {
       // await Future.delayed(Duration(seconds: 5));
       final result = await http.get(
         Uri.parse(
-          'https://api.openweathermap.org/data/2.5/forecast?q=Lagos&APPID=48679c1a1dd206ce3544550d0abcc603',
+          'https://api.openweathermap.org/data/2.5/forecast?q=Lagos&APPID=$includeAPIKEY',
         ),
       );
 
